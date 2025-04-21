@@ -18,7 +18,8 @@ export default function UserTripList({ userTrips }) {
 						uri:
 							"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" +
 							LatestTrip?.locationInfo?.photoRef +
-							"&key=AIzaSyCPtTP_qtHtiEE6rST9J3mPOe7m_2WO-ps",
+							"&key=" +
+							process.env.EXPO_PUBLIC_PLACE_API_KEY,
 					}}
 				/>
 			</View>

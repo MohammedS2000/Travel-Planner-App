@@ -21,7 +21,6 @@ import { v4 as uuidv4 } from "uuid";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { CreateTripContext } from "@/context/CreateTripContext";
 
-
 export default function SignUp() {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
@@ -127,7 +126,7 @@ export default function SignUp() {
 									},
 								}}
 								query={{
-									key: "AIzaSyCPtTP_qtHtiEE6rST9J3mPOe7m_2WO-ps",
+									key: process.env.EXPO_PUBLIC_PLACE_API_KEY,
 									language: "en",
 								}}
 							/>

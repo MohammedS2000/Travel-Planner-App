@@ -55,7 +55,8 @@ export default function UserTripDetails() {
 							uri:
 								"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" +
 								formDataText?.locationInfo?.photoRef +
-								"&key=AIzaSyCPtTP_qtHtiEE6rST9J3mPOe7m_2WO-ps",
+								"&key=" +
+								process.env.EXPO_PUBLIC_PLACE_API_KEY,
 						}}
 					/>
 					<View className="h-full p-4 bg-white rounded-t-3xl mt-[-50]">

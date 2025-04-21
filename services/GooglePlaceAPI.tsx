@@ -1,6 +1,6 @@
 export const GetPhotoRef = async (placeName) => {
 	const resp = await fetch(
-		`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${placeName}&key=AIzaSyCPtTP_qtHtiEE6rST9J3mPOe7m_2WO-ps`, // Replace YOUR_API_KEY
+		`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${placeName}&key=${process.env.EXPO_PUBLIC_PLACE_API_KEY}`,
 	);
 	const result = await resp.json();
 

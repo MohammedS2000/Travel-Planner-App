@@ -25,7 +25,8 @@ export default function HotelCard({ item }) {
 					uri:
 						"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" +
 						photoRef +
-						"&key=AIzaSyCPtTP_qtHtiEE6rST9J3mPOe7m_2WO-ps",
+						"&key=" +
+						process.env.EXPO_PUBLIC_PLACE_API_KEY,
 				}}
 			/>
 			<Text className="my-3 font-semibold text-lg">{item?.hotelName}</Text>
