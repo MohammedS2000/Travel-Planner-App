@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, TextInput, ToastAndroid } from "react-native";
+import { View, Text, Image, TouchableOpacity, TextInput, ToastAndroid, ActivityIndicator, ScrollView } from "react-native";
 import React, { useState } from 'react'
 import { router, useNavigation, useRouter } from 'expo-router'
 import { useEffect } from 'react'
@@ -10,6 +10,7 @@ export default function SignIn() {
 
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState()
+	const [isLoading, setIsLoading] = useState(false);
 
 	const myRouter = useRouter();
 
@@ -23,24 +24,27 @@ export default function SignIn() {
     }, [])
 
 	const onSignIn = () => {
+		setIsLoading(true);
 		if (!email || !password) {
 			ToastAndroid.show("Enter all details",ToastAndroid.LONG)
+			setIsLoading(false);
 			return;
 		}
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
-				// Signed in
 				const user = userCredential.user;
 				router.replace('/myTrip')
-				// ...
+				setIsLoading(false);
 			})
 			.catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
 				if (errorCode === "auth/invalid-credential") {
+					setIsLoading(false);
 					ToastAndroid.show("Invalid credntials", ToastAndroid.BOTTOM);
 				}
 				else if (errorCode === "auth/invalid-email") {
+					setIsLoading(false);
 					ToastAndroid.show("Invalid Email", ToastAndroid.BOTTOM);
 				}
 			});
@@ -48,7 +52,7 @@ export default function SignIn() {
     
 
   return (
-			<View className="flex-1 bg-white">
+			<ScrollView className="flex-1 bg-white">
 				<Image
 					className="w-full h-[350px] relative"
 					source={require("../../../assets/images/vecteezy_shadow-of-an-airplane-glides-over-a-turquoise-beach_54233997.jpeg")}
@@ -85,9 +89,15 @@ export default function SignIn() {
 						onPress={onSignIn}
 						className="flex-1 items-center justify-end"
 					>
-						<Text className="bg-primary-300 rounded-full text-lg font-bold text-white text-center w-full py-3">
-							Login
-						</Text>
+						{isLoading ? (
+							<ActivityIndicator className="bg-primary-300 rounded-full text-lg font-bold text-white text-center w-full py-3" size="small" color="white" />
+						) : (
+								<Text className="bg-primary-300 rounded-full text-lg font-bold text-white text-center w-full py-3">
+									Login
+								</Text>
+							
+						)}
+						
 					</TouchableOpacity>
 					<Text className="text-gray-400 text-center mt-2">
 						Dont have an account?
@@ -99,6 +109,6 @@ export default function SignIn() {
 						</Text>
 					</Text>
 				</View>
-			</View>
+			</ScrollView>
 		);
 }

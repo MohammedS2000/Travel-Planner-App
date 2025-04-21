@@ -14,7 +14,7 @@ signOut(auth).then(()=>{
   return (
     <View>
       <TouchableOpacity onPress={() => LogUserOut()}>
-        <Text className='bg-primary-200 p-3 rounded-2xl text-white font-semibold text-lg text-center'>Log Out</Text>
+        <Text className='bg-white p-3 rounded-2xl text-primary-200 font-semibold text-lg text-center'>Log Out</Text>
       </TouchableOpacity>
     </View>
   )

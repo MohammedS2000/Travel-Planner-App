@@ -1,4 +1,4 @@
-import { View, Text , Image} from 'react-native'
+import { View, Text , Image, ScrollView} from 'react-native'
 import React, { useContext, useEffect } from 'react'
 import { useNavigation, useRouter } from 'expo-router'
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
@@ -21,16 +21,9 @@ export default function SearchPlace() {
 				headerTitle: "Search",
 			});
 		}, []);
-
-useEffect(() => {
-  console.log(tripData);
-}, [tripData])
-
- 
-
   
   return (
-			<View className="flex-1 bg-white justify-between">
+			<View className="flex-1 bg-white">
 				<View className="p-[25] pt-[55]">
 					<GooglePlacesAutocomplete
 						placeholder="Search for Place"
@@ -38,6 +31,7 @@ useEffect(() => {
 						onFail={(error) => console.log(error)}
 						onPress={(data, details = null) => {
 							setTripData({
+								...tripData,
 								locationInfo: {
 									name: data.description,
 									coordinantes: details?.geometry.location,
@@ -79,19 +73,21 @@ useEffect(() => {
 					/>
 				</View>
 
-				<View className="flex-1 items-center justify-center px-4 mt-[40]">
-					<Text className="text-3xl font-semibold text-center">
-						Choose Your Destination
-					</Text>
-					<Text className="text-gray-500 mt-1 text-center">
-						Where do you want to go for your next trip? you can choose any
-						destination you want
-					</Text>
-					<Image
-						className="w-48 h-48 mt-2"
-						source={require("./../../assets/images/location-pin.png")}
-					/>
-				</View>
+				<ScrollView scrollEnabled={false} className="flex-1 px-4 mt-[200]">
+					<View className='items-center justify-center'>
+						<Text className="text-3xl font-semibold text-center">
+							Choose Your Destination
+						</Text>
+						<Text className="text-gray-500 mt-1 text-center">
+							Where do you want to go for your next trip? you can choose any
+							destination you want
+						</Text>
+						<Image
+							className="w-48 h-48 mt-2"
+							source={require("./../../assets/images/location-pin.png")}
+						/>
+					</View>
+				</ScrollView>
 			</View>
 		);
 }

@@ -64,28 +64,6 @@ const desiredOutputFormat = `{
       },
       "rating": ...,
       "description": "...",
-      "nearbyPlaces": [
-        {
-          "placeName": "...",
-          "placeDetails": "...",
-          "imageUrl": "...",
-          "geoCoordinates": {
-            "latitude": ...,
-            "longitude": ...
-          },
-          "ticketPricing": "...",
-          "timeToTravel": "..."
-        },
-        {
-          "placeName": "...",
-          "placeDetails": "...",
-          "imageUrl": "...",
-          "geoCoordinates": {
-            "latitude": ...,
-            "longitude": ...
-          },
-          "ticketPricing": "...",
-          "timeToTravel": "..."
         }
       ]
     },
@@ -100,30 +78,6 @@ const desiredOutputFormat = `{
       },
       "rating": ...,
       "description": "...",
-      "nearbyPlaces": [
-        {
-          "placeName": "...",
-          "placeDetails": "...",
-          "imageUrl": "...",
-          "geoCoordinates": {
-            "latitude": ...,
-            "longitude": ...
-          },
-          "ticketPricing": "...",
-          "timeToTravel": "..."
-        },
-        {
-          "placeName": "...",
-          "placeDetails": "...",
-          "imageUrl": "...",
-          "geoCoordinates": {
-            "latitude": ...,
-            "longitude": ...
-          },
-          "ticketPricing": "...",
-          "timeToTravel": "..."
-        }
-      ]
     },
     {
       "hotelName": "...",
@@ -136,30 +90,6 @@ const desiredOutputFormat = `{
       },
       "rating": ...,
       "description": "...",
-      "nearbyPlaces": [
-        {
-          "placeName": "...",
-          "placeDetails": "...",
-          "imageUrl": "...",
-          "geoCoordinates": {
-            "latitude": ...,
-            "longitude": ...
-          },
-          "ticketPricing": "...",
-          "timeToTravel": "..."
-        },
-        {
-          "placeName": "...",
-          "placeDetails": "...",
-          "imageUrl": "...",
-          "geoCoordinates": {
-            "latitude": ...,
-            "longitude": ...
-          },
-          "ticketPricing": "...",
-          "timeToTravel": "..."
-        }
-      ]
     }
   ],
   "itinerary": {

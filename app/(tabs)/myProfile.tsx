@@ -1,12 +1,14 @@
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
+import { View, Text, ActivityIndicator, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import { auth, db } from "@/config/FirebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import LoginOut from "@/components/myProfile/LoginOut";
+import { useRouter } from "expo-router";
+import PersonalInfo from "@/components/myProfile/PersonalInfo";
 
 export default function MyProfile() {
+	const myRouter = useRouter()
 	const user = auth.currentUser;
 	const [isLoading, setIsLoading] = useState(false);
 	const [userInfo, setUserInfo] = useState();
@@ -22,18 +24,14 @@ export default function MyProfile() {
 		const q = query(collection(db, "users"),where("emailLowerCase","==",user?.email));
 		const querySnapshot = await getDocs(q);
 	
-		querySnapshot.forEach((doc) => {
-	  // doc.data() is never undefined for query doc snapshots
-		console.log(doc.id, " => ", doc.data());
+		querySnapshot.forEach((doc) => { 
 		setUserInfo(doc.data())
 		});
-		setIsLoading(false)
-		console.log(userInfo);
-		
+		setIsLoading(false)		
 	  }
 
 	return (
-		<View className="flex-1 bg-primary-300 h-full p-[25] pt-[75]">
+		<ScrollView className="flex-1 bg-primary-300 h-full p-[25] pt-[75]">
 			<View className=" items-center justify-center mb-5">
 				{isLoading ? (
 					<ActivityIndicator />
@@ -43,23 +41,13 @@ export default function MyProfile() {
 						<Text className="text-white font-semibold text-2xl mb-2 ">
 							{userInfo?.fullName}
 						</Text>
-						<Text className="text-white font-semibold text-sm">
-							{user.email}
-						</Text>
 					</View>
 				)}
 			</View>
-			<View className="bg-white rounded-2xl p-[25]">
-				<TouchableOpacity>
-					<View className="border-b p-2 flex-row justify-between items-center border-gray-300 mb-5">
-						<Text className="text-lg text-primary-300 font-semibold">
-							Profile
-						</Text>
-						<AntDesign name="right" size={18} color="#d1d5db" />
-					</View>
-				</TouchableOpacity>
+			<View>
+				<PersonalInfo userInfo={userInfo}/>
 				<LoginOut/>
 			</View>
-		</View>
+		</ScrollView>
 	);
 }
