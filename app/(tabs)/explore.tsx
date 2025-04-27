@@ -8,7 +8,7 @@ return (
     flex:1,
   }}>
 		<MapView style={{
-      width:"100%",
+      width:"100%", 
       height:"100%"
     }} />
 	</View>
