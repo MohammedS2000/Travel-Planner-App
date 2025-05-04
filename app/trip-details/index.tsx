@@ -5,7 +5,6 @@ import {
 	ActivityIndicator,
 	ScrollView,
 	TouchableOpacity,
-	Button,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
@@ -52,7 +51,7 @@ export default function UserTripDetails() {
 	return (
 		<View className="flex-1 h-full bg-white">
 			{isLoading ? (
-				<ActivityIndicator size={"large"} color={"#3D8A7D"} />
+				<ActivityIndicator className="justify-center items-center" size={"large"} color={"#3D8A7D"} />
 			) : (
 				<ScrollView>
 					<Image
@@ -89,7 +88,7 @@ export default function UserTripDetails() {
 								</Text>
 							</View>
 							<TouchableOpacity onPress={handleDelete}>
-								<Text className="bg-red-500 text-white p-3 rounded-2xl mt-3 text-center font-bold text-lg">
+								<Text className="bg-red-500 text-white p-3 rounded-2xl mt-3 text-center font-bold text-sm">
 									Delete Trip
 								</Text>
 							</TouchableOpacity>

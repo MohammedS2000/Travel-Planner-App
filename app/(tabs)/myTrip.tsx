@@ -60,8 +60,6 @@ export default function MyTrip() {
 					</View>
 				)}
 			</View>
-
-			
 		</ScrollView>
 	);
 }

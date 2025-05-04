@@ -159,7 +159,7 @@ export default function SignUp() {
 								<ActivityIndicator size="small" color="white" />
 							</View>
 						) : (
-							<Text className="bg-primary-300 rounded-full text-lg font-bold text-white text-center w-full py-3">
+							<Text className="bg-primary-300 rounded-full text-lg font-bold mt-2 text-white text-center w-full py-3">
 								Sign Up
 							</Text>
 						)}

@@ -1,7 +1,7 @@
 export const SelectTravelerList = [
 	{
 		id: 1,
-		title: "Just me",
+		title: "Just  me",
 		desc: "going in a journey alone",
 		icon: "✈️",
 	},
